@@ -25,7 +25,7 @@ Route 1 is split into 1a and 1b so the bottleneck can be located, not just measu
 
 ## Configuration format (planned)
 
-Routes will live in `config/routes.json`:
+Routes will live in `routes.json` at the repo root:
 
 ```json
 {

@@ -22,25 +22,30 @@ Fallback scheduler if GitHub Actions timing proves unreliable: Cloudflare Worker
 |---|---|
 | Language | TypeScript (collector and web share types) |
 | Runtime | Node.js (current LTS) |
-| Collector | Plain Node script, run by GitHub Actions |
-| Database access | Typed SQL client (to be chosen when the collector is built) |
+| Collector | Plain Node script (`scripts/collect.ts`), run by GitHub Actions |
+| Database access | Plain SQL through a Postgres client (`pg` or `postgres`), no ORM |
 | Web | Next.js (App Router) |
 | Charts | A lightweight charting library, chosen in the frontend phase |
 | Package manager | npm |
 | CI | GitHub Actions: lint, type-check, tests |
-| Tests | Vitest for the collector and aggregation logic |
+| Tests | Vitest, only for logic that is easy to get wrong (time-block bucketing in local time) |
 
 ## Repository layout (planned)
 
+A single package: one `package.json`, one `tsconfig`. No monorepo.
+
 ```
 rutachapina/
-  collector/    scheduled script and provider adapters
-  web/          Next.js app
-  db/           migrations and SQL
-  config/       route definitions
-  docs/         documentation
-  .github/workflows/
+  app/                  Next.js (reads the database, renders ranges)
+  scripts/collect.ts    run by GitHub Actions: routes -> provider -> INSERT
+  scripts/providers/    tomtom.ts (mapbox.ts, here.ts once evaluated)
+  routes.json           route definitions
+  schema.sql            database schema
+  docs/
+  .github/workflows/    collect.yml, ci.yml
 ```
+
+Next.js lives at the repo root because that is where Vercel expects it. The collector sits outside `app/`, so it is never part of the web build.
 
 ## Environments and secrets
 

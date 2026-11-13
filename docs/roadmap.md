@@ -19,7 +19,7 @@ Principle: collect first, present later. The history is the asset.
 
 ## Phase 2: Collector
 
-- [ ] Database schema and migrations
+- [ ] Database schema (`schema.sql`)
 - [ ] Collector script with the full route list
 - [ ] Scheduled workflow (5:00-22:00, denser at peak hours)
 - [ ] Handling of failures, retries and quota limits
@@ -27,7 +27,7 @@ Principle: collect first, present later. The history is the asset.
 
 ## Phase 3: Analysis
 
-- [ ] Percentile aggregates (p10 / p50 / p90) by day of week and 15-minute block
+- [ ] Percentile query (p10 / p50 / p90) by day of week and 15-minute block
 - [ ] Low-confidence flag for blocks with few samples
 - [ ] Locate bottlenecks on Interamericana using the 1a / 1b split
 
