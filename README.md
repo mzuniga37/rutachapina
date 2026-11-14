@@ -33,6 +33,7 @@ Starting corridors (both directions): Interamericana (Bulevar Los Proceres to Sa
 - [Providers and rate limits](docs/providers.md)
 - [Routes](docs/routes.md)
 - [Roadmap](docs/roadmap.md)
+- [Plan B](docs/plan-b.md)
 
 ## Status
 
@@ -44,11 +45,15 @@ Requires Node.js 20 or newer.
 
 ```
 npm install
-npm test
+npm test          # includes SQL tests on an in-memory Postgres
 npm run typecheck
+npm run build     # builds the web app
+npm run dev       # web app at http://localhost:3000, needs DATABASE_URL
 ```
 
-The collector reads its settings from environment variables; see [`.env.example`](.env.example). Never commit real keys.
+The collector and the web app read their settings from environment variables; see [`.env.example`](.env.example). Never commit real keys. The collector needs `PROVIDER` set explicitly, so it never queries a provider by accident.
+
+If no provider can legally store traffic data, see the [alternatives](docs/plan-b.md).
 
 ## License
 

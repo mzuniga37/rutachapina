@@ -1,7 +1,7 @@
 [
   {
     "slug": "interamericana-full",
-    "name": "Interamericana: Bulevar Los Próceres to San Lucas Sacatepéquez",
+    "name": "Interamericana: Bulevar Los Próceres a San Lucas Sacatepéquez",
     "origin": {
       "lat": 14.57969,
       "lng": -90.48411
@@ -29,7 +29,7 @@
   },
   {
     "slug": "interamericana-urban",
-    "name": "Interamericana, urban section: Bulevar Los Próceres to Km 15",
+    "name": "Interamericana, tramo urbano: Bulevar Los Próceres a Km 15",
     "origin": {
       "lat": 14.57969,
       "lng": -90.48411
@@ -57,7 +57,7 @@
   },
   {
     "slug": "interamericana-outer",
-    "name": "Interamericana, outer section: Km 15 to San Lucas Sacatepéquez",
+    "name": "Interamericana, tramo exterior: Km 15 a San Lucas Sacatepéquez",
     "origin": {
       "lat": 14.61789,
       "lng": -90.60653
@@ -72,7 +72,7 @@
   },
   {
     "slug": "aguilar-batres",
-    "name": "Calzada Aguilar Batres: Trébol to Villa Nueva",
+    "name": "Calzada Aguilar Batres: Trébol a Villa Nueva",
     "origin": {
       "lat": 14.61258,
       "lng": -90.53631
@@ -87,7 +87,7 @@
   },
   {
     "slug": "periferico",
-    "name": "Periférico: near USAC to Zona 1",
+    "name": "Periférico: cerca de la USAC a Zona 1",
     "origin": {
       "lat": 14.59289,
       "lng": -90.55092
@@ -119,7 +119,7 @@
   },
   {
     "slug": "vista-hermosa",
-    "name": "Bulevar Vista Hermosa: Zona 15 to Zona 4",
+    "name": "Bulevar Vista Hermosa: Zona 15 a Zona 4",
     "origin": {
       "lat": 14.58139,
       "lng": -90.48464
@@ -134,7 +134,7 @@
   },
   {
     "slug": "san-cristobal",
-    "name": "Bulevar San Cristóbal (Mixco, Zona 8) to Calzada Roosevelt",
+    "name": "Bulevar San Cristóbal (Mixco, Zona 8) a Calzada Roosevelt",
     "origin": {
       "lat": 14.59511,
       "lng": -90.5675
@@ -149,7 +149,7 @@
   },
   {
     "slug": "calzada-san-juan",
-    "name": "Calzada San Juan: start to La Florida (Zona 19)",
+    "name": "Calzada San Juan: inicio a La Florida (Zona 19)",
     "origin": {
       "lat": 14.61825,
       "lng": -90.54181
@@ -164,7 +164,7 @@
   },
   {
     "slug": "mateo-flores",
-    "name": "Calzada Mateo Flores: start to end",
+    "name": "Calzada Mateo Flores: inicio a fin",
     "origin": {
       "lat": 14.62922,
       "lng": -90.55631
@@ -179,7 +179,7 @@
   },
   {
     "slug": "calle-marti",
-    "name": "Calle Martí: city entrance from Puerto Barrios",
+    "name": "Calle Martí: entrada desde Puerto Barrios",
     "origin": {
       "lat": 14.64822,
       "lng": -90.47567

@@ -1,0 +1,42 @@
+name: Collect
+
+on:
+  workflow_dispatch:
+    inputs:
+      provider:
+        description: Provider to query (see scripts/providers/index.ts). Defaults to the PROVIDER repository variable.
+        required: false
+        type: string
+  # Scheduled collection stays OFF until the provider's terms on storing results are confirmed.
+  # To enable: uncomment, and create the repository variable PROVIDER with the chosen provider
+  # (Settings > Secrets and variables > Actions > Variables). Scheduled runs have no inputs.
+  # Every 15 minutes, 5:00-22:00 Guatemala time (UTC-6) = 11:00-04:00 UTC.
+  # schedule:
+  #   - cron: "*/15 11-23 * * *"
+  #   - cron: "*/15 0-3 * * *"
+  #   - cron: "0 4 * * *"
+
+permissions:
+  contents: read
+
+# A run that is still going must not overlap with the next one.
+concurrency:
+  group: collect
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run collect
+        env:
+          PROVIDER: ${{ inputs.provider || vars.PROVIDER }}
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          TOMTOM_API_KEY: ${{ secrets.TOMTOM_API_KEY }}

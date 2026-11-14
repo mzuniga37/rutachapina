@@ -37,12 +37,13 @@ A single package: one `package.json`, one `tsconfig`. No monorepo.
 ```
 rutachapina/
   app/                  Next.js (reads the database, renders ranges)
+  lib/                  code shared by the web app and tests (percentile query, database client)
   scripts/collect.ts    run by GitHub Actions: routes -> provider -> INSERT
-  scripts/providers/    tomtom.ts (mapbox.ts, here.ts once evaluated)
+  scripts/providers/    one file per provider, chosen with the PROVIDER variable
   routes.json           route definitions
   schema.sql            database schema
   docs/
-  .github/workflows/    collect.yml, ci.yml
+  .github/workflows/    ci.yml (checks), collect.yml (manual collection)
 ```
 
 Next.js lives at the repo root because that is where Vercel expects it. The collector sits outside `app/`, so it is never part of the web build.
@@ -51,6 +52,9 @@ Next.js lives at the repo root because that is where Vercel expects it. The coll
 
 - API keys and the database URL live in GitHub Actions secrets and Vercel environment variables.
 - Nothing secret is committed. A `.env.example` documents the variables.
+- The collector (GitHub Actions) connects through the Supabase Session pooler (port 5432), which works over IPv4. The web app on Vercel gets its own `DATABASE_URL` pointing at the Transaction pooler (port 6543), with one connection per instance, because each serverless instance opens its own pool.
+- The web app caches each route and direction query for 5 minutes, so visitors share one database query.
+- Scheduled collection reads the provider from the `PROVIDER` repository variable; manual runs can override it.
 
 ## Branching
 
