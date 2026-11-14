@@ -10,12 +10,13 @@ Quotas and terms below were noted from memory and **must be re-verified** agains
 |---|---|---|---|
 | TomTom | Routing API (`calculateRoute` with traffic) | About 2,500 requests/day | Tested 2026-11-13: returned no traffic data for Guatemala City (see findings below). |
 | Mapbox | Directions API (`driving-traffic` profile) | About 100,000 requests/month | Returns traffic in Guatemala City (see findings). Storage terms not yet confirmed. |
-| HERE | Routing API v8 | Uncertain (reports of 30k vs 250k/month) | Not tested yet. Confirm the real free quota first. |
+| HERE | Routing API v8 | Uncertain (reports of 30k vs 250k/month) | Tested 2026-11-13: returned no traffic data for Guatemala City (see findings below). |
 
 ## Findings so far (2026-11-13)
 
 - **TomTom has no usable traffic data here.** On a Friday at 18:43 local time, the Routing API returned identical live, historic and no-traffic travel times, zero delay and no traffic sections for every route. Its Flow Segment Data API found no segments near three points on main avenues. Only free-flow times are available.
 - **Mapbox has traffic data here, with gaps.** `driving-traffic` returned a live `duration` different from `duration_typical`, and congestion levels (`low`, `moderate`, `heavy`) on all tested routes. A share of road segments came back as `unknown`. Routes with 5-6 coordinates were accepted. Accuracy against real trips has not been measured yet.
+- **HERE has no usable traffic data here either.** On all 10 routes in both directions (Friday 19:54 local time), the Routing API v8 returned a travel time with traffic identical to its base (free-flow) duration. A control run of Mapbox at the same minute still showed 4% to 22% above typical, so the time of day does not explain it.
 - **Mapbox storage terms are unconfirmed.** The public Terms of Service do not state a rule for storing Directions results, and the Product Terms could not be read. Written confirmation has been requested.
 - **No long-term collection until the storage question is settled.**
 
