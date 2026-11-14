@@ -15,9 +15,13 @@ await db.connect();
 let saved = 0;
 let failed = 0;
 
-// Sequential on purpose: 20 requests, and it stays far below the provider's per-second limit.
+// TomTom answered HTTP 429 at ~5.5 requests/s; one request every 300 ms stays under its limit.
+const PAUSE_MS = 300;
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
 for (const route of loadRoutes().filter((r) => r.active)) {
   for (const { direction, leg } of legsOf(route)) {
+    await sleep(PAUSE_MS);
     const sampledAt = new Date();
     try {
       const s = await provider.getTravelTime(leg);
