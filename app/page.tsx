@@ -35,7 +35,8 @@ export default async function Page({ searchParams }: { searchParams: Promise<Sea
     ranges = (await rangesFor(pool(), route.slug, dir)).filter(
       (r) => r.dow === day && r.block >= FIRST_BLOCK && r.block <= LAST_BLOCK,
     );
-  } catch {
+  } catch (e) {
+    console.error("ranges query failed:", e);
     failed = true;
   }
   const scale = Math.max(600, ...ranges.map((r) => r.p90)); // at least 10 minutes wide
