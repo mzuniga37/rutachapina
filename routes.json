@@ -1,0 +1,195 @@
+[
+  {
+    "slug": "interamericana-full",
+    "name": "Interamericana: Bulevar Los Próceres to San Lucas Sacatepéquez",
+    "origin": {
+      "lat": 14.57969,
+      "lng": -90.48411
+    },
+    "destination": {
+      "lat": 14.61261,
+      "lng": -90.65103
+    },
+    "waypoints": [
+      {
+        "lat": 14.61203,
+        "lng": -90.53394
+      },
+      {
+        "lat": 14.62567,
+        "lng": -90.55647
+      },
+      {
+        "lat": 14.63406,
+        "lng": -90.57633
+      }
+    ],
+    "bothDirections": true,
+    "active": true
+  },
+  {
+    "slug": "interamericana-urban",
+    "name": "Interamericana, urban section: Bulevar Los Próceres to Km 15",
+    "origin": {
+      "lat": 14.57969,
+      "lng": -90.48411
+    },
+    "destination": {
+      "lat": 14.61789,
+      "lng": -90.60653
+    },
+    "waypoints": [
+      {
+        "lat": 14.61203,
+        "lng": -90.53394
+      },
+      {
+        "lat": 14.62567,
+        "lng": -90.55647
+      },
+      {
+        "lat": 14.63406,
+        "lng": -90.57633
+      }
+    ],
+    "bothDirections": true,
+    "active": true
+  },
+  {
+    "slug": "interamericana-outer",
+    "name": "Interamericana, outer section: Km 15 to San Lucas Sacatepéquez",
+    "origin": {
+      "lat": 14.61789,
+      "lng": -90.60653
+    },
+    "destination": {
+      "lat": 14.61261,
+      "lng": -90.65103
+    },
+    "waypoints": [],
+    "bothDirections": true,
+    "active": true
+  },
+  {
+    "slug": "aguilar-batres",
+    "name": "Calzada Aguilar Batres: Trébol to Villa Nueva",
+    "origin": {
+      "lat": 14.61258,
+      "lng": -90.53631
+    },
+    "destination": {
+      "lat": 14.55547,
+      "lng": -90.57656
+    },
+    "waypoints": [],
+    "bothDirections": true,
+    "active": true
+  },
+  {
+    "slug": "periferico",
+    "name": "Periférico: near USAC to Zona 1",
+    "origin": {
+      "lat": 14.59289,
+      "lng": -90.55092
+    },
+    "destination": {
+      "lat": 14.64281,
+      "lng": -90.52267
+    },
+    "waypoints": [
+      {
+        "lat": 14.60839,
+        "lng": -90.55739
+      },
+      {
+        "lat": 14.62192,
+        "lng": -90.55769
+      },
+      {
+        "lat": 14.63717,
+        "lng": -90.55122
+      },
+      {
+        "lat": 14.64553,
+        "lng": -90.53561
+      }
+    ],
+    "bothDirections": true,
+    "active": true
+  },
+  {
+    "slug": "vista-hermosa",
+    "name": "Bulevar Vista Hermosa: Zona 15 to Zona 4",
+    "origin": {
+      "lat": 14.58139,
+      "lng": -90.48464
+    },
+    "destination": {
+      "lat": 14.61122,
+      "lng": -90.5055
+    },
+    "waypoints": [],
+    "bothDirections": true,
+    "active": true
+  },
+  {
+    "slug": "san-cristobal",
+    "name": "Bulevar San Cristóbal (Mixco, Zona 8) to Calzada Roosevelt",
+    "origin": {
+      "lat": 14.59511,
+      "lng": -90.5675
+    },
+    "destination": {
+      "lat": 14.61742,
+      "lng": -90.60617
+    },
+    "waypoints": [],
+    "bothDirections": true,
+    "active": true
+  },
+  {
+    "slug": "calzada-san-juan",
+    "name": "Calzada San Juan: start to La Florida (Zona 19)",
+    "origin": {
+      "lat": 14.61825,
+      "lng": -90.54181
+    },
+    "destination": {
+      "lat": 14.65467,
+      "lng": -90.58803
+    },
+    "waypoints": [],
+    "bothDirections": true,
+    "active": true
+  },
+  {
+    "slug": "mateo-flores",
+    "name": "Calzada Mateo Flores: start to end",
+    "origin": {
+      "lat": 14.62922,
+      "lng": -90.55631
+    },
+    "destination": {
+      "lat": 14.6355,
+      "lng": -90.59014
+    },
+    "waypoints": [],
+    "bothDirections": true,
+    "active": true
+  },
+  {
+    "slug": "calle-marti",
+    "name": "Calle Martí: city entrance from Puerto Barrios",
+    "origin": {
+      "lat": 14.64822,
+      "lng": -90.47567
+    },
+    "destination": {
+      "lat": 14.64569,
+      "lng": -90.52503
+    },
+    "waypoints": [],
+    "bothDirections": true,
+    "active": true
+  }
+]
