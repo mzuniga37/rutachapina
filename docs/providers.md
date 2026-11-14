@@ -17,7 +17,7 @@ Quotas and terms below were noted from memory and **must be re-verified** agains
 - **TomTom has no usable traffic data here.** On a Friday at 18:43 local time, the Routing API returned identical live, historic and no-traffic travel times, zero delay and no traffic sections for every route. Its Flow Segment Data API found no segments near three points on main avenues. Only free-flow times are available.
 - **Mapbox has traffic data here, with gaps.** `driving-traffic` returned a live `duration` different from `duration_typical`, and congestion levels (`low`, `moderate`, `heavy`) on all tested routes. A share of road segments came back as `unknown`. Routes with 5-6 coordinates were accepted. Accuracy against real trips has not been measured yet.
 - **HERE has no usable traffic data here either.** On all 10 routes in both directions (Friday 19:54 local time), the Routing API v8 returned a travel time with traffic identical to its base (free-flow) duration. A control run of Mapbox at the same minute still showed 4% to 22% above typical, so the time of day does not explain it.
-- **Mapbox storage terms are unconfirmed.** The public Terms of Service do not state a rule for storing Directions results, and the Product Terms could not be read. Written confirmation has been requested.
+- **Mapbox storage terms are unconfirmed.** The public Terms of Service do not state a rule for storing Directions results, and the Product Terms could not be read. Written confirmation from Mapbox will be requested before any long-term collection.
 - **No long-term collection until the storage question is settled.**
 
 ## Terms to read before collecting
