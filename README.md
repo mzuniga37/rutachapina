@@ -36,7 +36,19 @@ Starting corridors (both directions): Interamericana (Bulevar Los Proceres to Sa
 
 ## Status
 
-Early stage: design and documentation. Data collection has not started yet.
+Early stage. The collector and database schema are written, and traffic providers are being evaluated: not every provider has traffic data for Guatemala (see [providers](docs/providers.md)). Long-term data collection has not started.
+
+## Development
+
+Requires Node.js 20 or newer.
+
+```
+npm install
+npm test
+npm run typecheck
+```
+
+The collector reads its settings from environment variables; see [`.env.example`](.env.example). Never commit real keys.
 
 ## License
 
