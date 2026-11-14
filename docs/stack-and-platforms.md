@@ -10,7 +10,7 @@ The goal is to run everything at **zero cost**. Free-tier limits change, so conf
 | Collector scheduler | GitHub Actions (`schedule`) | Free cron, no server to run | Minimum interval is 5 min and runs can be delayed by a few minutes; scheduled workflows are disabled after 60 days without repo activity |
 | Database | Supabase or Neon (PostgreSQL) | Free tier is enough for a few hundred rows per day | Free projects can pause when idle; storage cap on the free plan |
 | Frontend | Vercel (Hobby) | Free, native Next.js | Non-commercial use on the free plan; Vercel cron on Hobby only runs once per day, so it is not used for collection |
-| Traffic data | TomTom (first candidate) | Generous free daily quota | See [providers](providers.md) |
+| Traffic data | To be decided | Free tiers exist at TomTom, Mapbox and HERE, but only some have traffic data in Guatemala | See [providers](providers.md) |
 
 Railway was considered for the collector and database, but it is no longer free, so it was dropped.
 

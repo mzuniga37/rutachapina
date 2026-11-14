@@ -8,9 +8,16 @@ Quotas and terms below were noted from memory and **must be re-verified** agains
 
 | Provider | API | Free quota (to verify) | Notes |
 |---|---|---|---|
-| TomTom | Routing API (`calculateRoute` with traffic) | About 2,500 requests/day | First candidate. Returns live travel time, no-traffic time and delay. |
-| Mapbox | Directions API (`driving-traffic` profile) | About 100,000 requests/month | Check terms on storing results. |
-| HERE | Routing API v8 | Uncertain (reports of 30k vs 250k/month) | Confirm the real free quota first. |
+| TomTom | Routing API (`calculateRoute` with traffic) | About 2,500 requests/day | Tested 2026-11-13: returned no traffic data for Guatemala City (see findings below). |
+| Mapbox | Directions API (`driving-traffic` profile) | About 100,000 requests/month | Returns traffic in Guatemala City (see findings). Storage terms not yet confirmed. |
+| HERE | Routing API v8 | Uncertain (reports of 30k vs 250k/month) | Not tested yet. Confirm the real free quota first. |
+
+## Findings so far (2026-11-13)
+
+- **TomTom has no usable traffic data here.** On a Friday at 18:43 local time, the Routing API returned identical live, historic and no-traffic travel times, zero delay and no traffic sections for every route. Its Flow Segment Data API found no segments near three points on main avenues. Only free-flow times are available.
+- **Mapbox has traffic data here, with gaps.** `driving-traffic` returned a live `duration` different from `duration_typical`, and congestion levels (`low`, `moderate`, `heavy`) on all tested routes. A share of road segments came back as `unknown`. Routes with 5-6 coordinates were accepted. Accuracy against real trips has not been measured yet.
+- **Mapbox storage terms are unconfirmed.** The public Terms of Service do not state a rule for storing Directions results, and the Product Terms could not be read. Written confirmation has been requested.
+- **No long-term collection until the storage question is settled.**
 
 ## Terms to read before collecting
 
@@ -20,11 +27,11 @@ Quotas and terms below were noted from memory and **must be re-verified** agains
 
 For each provider, record here: may we store travel times long term, may we publish derived statistics, any attribution required.
 
-## Request budget (TomTom)
+## Request budget (one request per series per sample)
 
 - Routes: 10 corridors x 2 directions = 20 series.
 - Window: 5:00-22:00 = 17 hours = 68 samples per series at 15 min.
-- Total: about 1,360 requests/day, leaving about 1,100 requests/day of headroom for denser peak-hour sampling.
+- Total: about 1,360 requests/day, or about 41,000 per month. That fits TomTom's daily quota (about 1,100 requests/day of headroom) and Mapbox's monthly quota.
 
 If more routes or higher frequency are needed, this is the ceiling to watch.
 
