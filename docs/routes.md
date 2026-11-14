@@ -30,7 +30,7 @@ Route 1 is split into 1a and 1b so the bottleneck can be located, not just measu
 ```json
 {
   "slug": "periferico",
-  "name": "Periférico: near USAC to Zona 1",
+  "name": "Periférico: cerca de la USAC a Zona 1",
   "origin": { "lat": 14.59289, "lng": -90.55092 },
   "destination": { "lat": 14.64281, "lng": -90.52267 },
   "waypoints": [{ "lat": 14.60839, "lng": -90.55739 }],
