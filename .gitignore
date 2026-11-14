@@ -30,3 +30,7 @@ Thumbs.db
 # Spreadsheet working files
 *.xlsx
 .~lock.*
+
+# Next.js generated
+next-env.d.ts
+*.tsbuildinfo
