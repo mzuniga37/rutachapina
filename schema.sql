@@ -12,5 +12,9 @@ create table if not exists samples (
   length_m          integer
 );
 
+-- No policies on purpose: the public API key cannot read or write samples.
+-- The collector connects straight to Postgres, which bypasses RLS.
+alter table samples enable row level security;
+
 create index if not exists samples_route_time_idx
   on samples (route_slug, direction, sampled_at);
