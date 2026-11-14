@@ -52,6 +52,9 @@ Next.js lives at the repo root because that is where Vercel expects it. The coll
 
 - API keys and the database URL live in GitHub Actions secrets and Vercel environment variables.
 - Nothing secret is committed. A `.env.example` documents the variables.
+- The collector (GitHub Actions) connects through the Supabase Session pooler (port 5432), which works over IPv4. The web app on Vercel gets its own `DATABASE_URL` pointing at the Transaction pooler (port 6543), with one connection per instance, because each serverless instance opens its own pool.
+- The web app caches each route and direction query for 5 minutes, so visitors share one database query.
+- Scheduled collection reads the provider from the `PROVIDER` repository variable; manual runs can override it.
 
 ## Branching
 

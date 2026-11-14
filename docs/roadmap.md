@@ -2,6 +2,10 @@
 
 Principle: collect first, present later. The history is the asset.
 
+## High priority (security)
+
+- [ ] **Encrypt the database connection.** The collector and the web app connect to PostgreSQL without TLS: the connection string has no `sslmode`, and the server does not force it, so data and writes travel in clear text. Fix, with no code change: add `?uselibpqcompat=true&sslmode=require` to `DATABASE_URL` (local `.env`, GitHub secret and hosting variable), and turn on "Enforce SSL" in the database settings of the hosting dashboard. This encrypts the traffic but does not verify the server's identity; full verification needs the provider's CA certificate. Must be done before the first real data collection and before deploying the web app.
+
 ## Phase 0: Foundation (done)
 
 - [x] Repository, branching model and commit conventions
@@ -40,7 +44,7 @@ Principle: collect first, present later. The history is the asset.
 - [x] Route, direction and day picker, with a range chart across the day
 - [ ] "Best departure window" suggestion
 - [ ] Deploy to Vercel
-- [ ] Caching, once there is traffic
+- [x] Caching: 5-minute shared cache per route and direction
 
 ## Phase 5: Local context
 
