@@ -26,3 +26,7 @@ Thumbs.db
 *.sqlite
 *.db
 /data/
+
+# Spreadsheet working files
+*.xlsx
+.~lock.*
