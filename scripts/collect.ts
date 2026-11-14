@@ -1,15 +1,9 @@
 import pg from "pg";
 import { legsOf, loadRoutes } from "./routes";
-import { tomtom } from "./providers/tomtom";
+import { providerFromEnv, requireEnv } from "./providers/index";
 
-function env(name: string): string {
-  const value = process.env[name];
-  if (!value) throw new Error(`Missing env var ${name}`);
-  return value;
-}
-
-const provider = tomtom(env("TOMTOM_API_KEY"));
-const db = new pg.Client({ connectionString: env("DATABASE_URL") });
+const provider = providerFromEnv();
+const db = new pg.Client({ connectionString: requireEnv("DATABASE_URL") });
 await db.connect();
 
 let saved = 0;
