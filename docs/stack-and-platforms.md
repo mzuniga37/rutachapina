@@ -37,12 +37,13 @@ A single package: one `package.json`, one `tsconfig`. No monorepo.
 ```
 rutachapina/
   app/                  Next.js (reads the database, renders ranges)
+  lib/                  code shared by the web app and tests (percentile query, database client)
   scripts/collect.ts    run by GitHub Actions: routes -> provider -> INSERT
-  scripts/providers/    tomtom.ts (mapbox.ts, here.ts once evaluated)
+  scripts/providers/    one file per provider, chosen with the PROVIDER variable
   routes.json           route definitions
   schema.sql            database schema
   docs/
-  .github/workflows/    collect.yml, ci.yml
+  .github/workflows/    ci.yml (checks), collect.yml (manual collection)
 ```
 
 Next.js lives at the repo root because that is where Vercel expects it. The collector sits outside `app/`, so it is never part of the web build.
