@@ -4,11 +4,12 @@ on:
   workflow_dispatch:
     inputs:
       provider:
-        description: Provider to query (see scripts/providers/index.ts)
-        required: true
+        description: Provider to query (see scripts/providers/index.ts). Defaults to the PROVIDER repository variable.
+        required: false
         type: string
   # Scheduled collection stays OFF until the provider's terms on storing results are confirmed.
-  # To enable: uncomment, and set PROVIDER below to the chosen provider.
+  # To enable: uncomment, and create the repository variable PROVIDER with the chosen provider
+  # (Settings > Secrets and variables > Actions > Variables). Scheduled runs have no inputs.
   # Every 15 minutes, 5:00-22:00 Guatemala time (UTC-6) = 11:00-04:00 UTC.
   # schedule:
   #   - cron: "*/15 11-23 * * *"
@@ -36,6 +37,6 @@ jobs:
       - run: npm ci
       - run: npm run collect
         env:
-          PROVIDER: ${{ inputs.provider }}
+          PROVIDER: ${{ inputs.provider || vars.PROVIDER }}
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           TOMTOM_API_KEY: ${{ secrets.TOMTOM_API_KEY }}
