@@ -2,41 +2,41 @@
 
 Every route is measured in **both directions**, because congestion flips with the time of day (toward the city in the morning, outward in the evening).
 
-Exact coordinates are **pending**: they will be set by dropping pins on a map. Long corridors also get one or two intermediate waypoints so the routing API does not take a shortcut off the avenue being measured.
+Coordinates live in [`routes.json`](../routes.json). Long corridors have intermediate waypoints so the routing API does not take a shortcut off the avenue being measured.
 
-| # | Route | From | To | Status |
-|---|---|---|---|---|
-| 1 | Interamericana (priority) | Bulevar Los Proceres | San Lucas Sacatepequez | Pins pending |
-| 1a | Interamericana, urban section | Bulevar Los Proceres | Km 15 | Pins pending |
-| 1b | Interamericana, outer section | Km 15 | San Lucas Sacatepequez | Pins pending |
-| 2 | Calzada Aguilar Batres | Trebol | Villa Nueva (entrance) | Pins pending |
-| 3 | Periferico | Near USAC | Zona 1 | Pins pending |
-| 4 | Bulevar Vista Hermosa | Zona 15 | Zona 4 | Pins pending |
-| 5 | Bulevar San Cristobal (Mixco, Zona 8) | Bulevar San Cristobal | Calzada Roosevelt | Pins pending |
-| 6 | Calzada San Juan | Start of the avenue | San Pedro Sacatepequez | Pins pending |
-| 7 | Calzada Mateo Flores | Start of the avenue | End of the avenue | Pins pending |
-| 8 | Calle Marti | City entrance from Puerto Barrios | Into the city | Pins pending |
+| # | Slug | Route | From | To | Waypoints |
+|---|---|---|---|---|---|
+| 1 | `interamericana-full` | Interamericana (priority) | Bulevar Los Proceres | San Lucas Sacatepequez | 3 |
+| 1a | `interamericana-urban` | Interamericana, urban section | Bulevar Los Proceres | Km 15 | 3 |
+| 1b | `interamericana-outer` | Interamericana, outer section | Km 15 | San Lucas Sacatepequez | 0 |
+| 2 | `aguilar-batres` | Calzada Aguilar Batres | Trebol | Villa Nueva (entrance) | 0 |
+| 3 | `periferico` | Periferico | Near USAC | Zona 1 | 4 |
+| 4 | `vista-hermosa` | Bulevar Vista Hermosa | Zona 15 | Zona 4 | 0 |
+| 5 | `san-cristobal` | Bulevar San Cristobal (Mixco, Zona 8) | Bulevar San Cristobal | Calzada Roosevelt | 0 |
+| 6 | `calzada-san-juan` | Calzada San Juan | Start of the avenue | End of the avenue (La Florida, Zona 19) | 0 |
+| 7 | `mateo-flores` | Calzada Mateo Flores | Start of the avenue | End of the avenue | 0 |
+| 8 | `calle-marti` | Calle Marti | City entrance from Puerto Barrios | Into the city | 0 |
 
-Route 1 is split into 1a and 1b so the bottleneck can be located, not just measured as a total.
+Route 1 is split into 1a and 1b so the bottleneck can be located, not just measured as a total. The Km 15 point is the same in 1a and 1b.
 
 ## Series count
 
 10 corridors, both directions: 20 series. Details of the request budget are in [providers](providers.md).
 
-## Configuration format (planned)
+## Configuration format
 
-Routes will live in `routes.json` at the repo root:
+`routes.json` is an array with one entry per route. Adding or removing a route means editing one entry.
 
 ```json
 {
-  "slug": "interamericana-full",
-  "name": "Interamericana: Los Proceres to San Lucas",
-  "origin": { "lat": 0, "lng": 0 },
-  "destination": { "lat": 0, "lng": 0 },
-  "waypoints": [],
+  "slug": "periferico",
+  "name": "Periférico: near USAC to Zona 1",
+  "origin": { "lat": 14.59289, "lng": -90.55092 },
+  "destination": { "lat": 14.64281, "lng": -90.52267 },
+  "waypoints": [{ "lat": 14.60839, "lng": -90.55739 }],
   "bothDirections": true,
   "active": true
 }
 ```
 
-Adding or removing a route means editing one entry. Placeholder coordinates above are not real.
+Waypoints are listed in driving order from origin to destination. For the reverse direction, the collector swaps origin and destination and reverses the waypoints.
