@@ -1,10 +1,16 @@
+import { unstable_cache } from "next/cache";
 import routes from "../routes.json";
 import { pool } from "../lib/db";
 import { rangesFor, type Range } from "../lib/ranges";
 import type { Direction } from "../scripts/routes";
 
-// shortcut: queries the database on every visit; add caching when traffic grows.
-export const dynamic = "force-dynamic";
+// All visitors share one database query per route and direction every 5 minutes.
+// A failed query is not cached, so the next visit retries.
+const cachedRanges = unstable_cache(
+  (slug: string, dir: Direction) => rangesFor(pool(), slug, dir),
+  ["ranges"],
+  { revalidate: 300 },
+);
 
 const DAYS = ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"];
 const FIRST_BLOCK = 5 * 4; // 05:00
@@ -32,7 +38,7 @@ export default async function Page({ searchParams }: { searchParams: Promise<Sea
   let ranges: Range[] = [];
   let failed = false;
   try {
-    ranges = (await rangesFor(pool(), route.slug, dir)).filter(
+    ranges = (await cachedRanges(route.slug, dir)).filter(
       (r) => r.dow === day && r.block >= FIRST_BLOCK && r.block <= LAST_BLOCK,
     );
   } catch (e) {
